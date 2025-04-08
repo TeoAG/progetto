@@ -1,0 +1,8 @@
+@font-face {
+    font-family: celtico;
+    src: url(Fonts/CELTG___.TTF);
+}
+
+body{
+    font-family: 'celtico';
+}
