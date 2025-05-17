@@ -51,7 +51,7 @@ body {
 }
 
 .navbar-list a:hover {
-  background-color: navy;
+  background-color: olive;
 }
 
 .contenitore {
@@ -83,7 +83,7 @@ body {
 }
 
 .hover-box:hover {
-  background-color: navy;
+  background-color: olive;
   color: white;
 }
 
@@ -92,5 +92,5 @@ body {
 }
 
 .titolo2 {
-  color: navy;
+  color: olive;
 }
