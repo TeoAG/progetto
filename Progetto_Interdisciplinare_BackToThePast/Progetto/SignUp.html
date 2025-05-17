@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="stylesAccess.css">
+    <title>Registrazione</title>
+    <link rel="icon" href="images/favicon.png" type="image/png">
+</head>
+<body bgcolor="orange">
+    <div class="pannelloAccount">
+        <div class="account">
+            <form method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
+                <h2>Registrazione utente</h2>
+                Username: <input type="text" name="utente"><br>
+                Password: <input type="password" name="password">
+                <button type="submit" name="InvioCredenziali" accesskey="enter">
+                    <img src="images/freccia.png">
+                </button>
+            </form>
+            <p>Hai già un account? <a href="Login.html">Accedi</a></p>
+            <div class="casa">
+                <a href="HomePage.html"><img src="images/casa.gif"></a>
+            </div>
+        </div>
+    </div>
+</body>
