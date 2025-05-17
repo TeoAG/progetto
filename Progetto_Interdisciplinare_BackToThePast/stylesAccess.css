@@ -1,0 +1,72 @@
+@font-face {
+    font-family: circular;
+    src: url(Fonts/AvenirLTStd-Black.otf);
+}
+
+body {
+    font-family: 'circular';
+}
+
+.pannelloAccount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 90vh;
+}
+
+.account {
+    width: 500px;
+    height: auto;
+    background-color: white;
+    border-radius: 15px;
+    align-items: center;
+    padding: 20px 20px 20px 20px;
+}
+
+.account h2 {
+    text-align: center;
+    color: orange;
+}
+
+.account input {
+    width: 50%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid navy;
+    border-radius: 5px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.account p {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.account a {
+    color: navy;
+}
+
+.account button {
+    background-color: navy;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    border-radius: 10px;
+    margin: 20px 0px 0px 20px;
+    width: 25%;
+}
+
+.account button:hover {
+    background-color: orange;
+}
+
+.casa {
+    display: flex;
+    justify-content: center;
+}
