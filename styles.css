@@ -5,6 +5,7 @@
 
 body {
   font-family: 'circular';
+  background-color: olive;
 }
 
 .titolo {
@@ -92,5 +93,5 @@ body {
 }
 
 .titolo2 {
-  color: olive;
+  color: orange;
 }
