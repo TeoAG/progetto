@@ -80,12 +80,6 @@ body {
   color: black;
   font-size: 25px;
   font-weight: bold;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.hover-box:hover {
-  background-color: olive;
-  color: white;
 }
 
 .about {
