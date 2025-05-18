@@ -26,7 +26,8 @@ if (!isset($_SESSION["username"])) {
                     <li><a href="#contact">Contatti</a></li>
                     <?php
                     if (isset($_SESSION["username"])) {
-                        echo "<li><a href='Logout.php'>Log Out</a></li>";
+                        $User = $_SESSION["username"];
+                        echo "<li><a href='Logout.php'>Ciao ".$User." Log Out?</a></li>";
                     } else {
                         echo "<li><a href='Login.php'>Accedi</a></li>";
                     }

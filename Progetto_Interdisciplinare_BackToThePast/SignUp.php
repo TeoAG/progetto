@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+<html>
 <?php
+session_start();
 require('config.php');
 if (!isset($_POST["Invio"])) {
     ?>
@@ -23,6 +25,28 @@ if (!isset($_POST["Invio"])) {
                         <img src="images/freccia.png">
                     </button>
                 </form>
+                <?php
+                if (isset($_SESSION["vuoto"])) {
+                    ?>
+                    <h3 style="color: red;">Riprova, Non lasciare nessun campo vuoto.</h3>
+                    <?php
+                    session_destroy();
+                } else {
+                    if (isset($_SESSION["errore"])) {
+                        ?>
+                        <h3 style="color: red;">Riprova, Utente già registrato.</h3>
+                        <?php
+                        session_destroy();
+                    } else {
+                        if (isset($_SESSION["corretto"])) {
+                            ?>
+                            <h3>Ti sei registrato</h3>
+                            <?php
+                            session_destroy();
+                        }
+                    }
+                }
+                ?>
                 <p>Hai già un account? <a href="Login.php">Accedi</a></p>
                 <div class="casa">
                     <a href="HomePage.php"><img src="images/casa.gif"></a>
@@ -32,14 +56,9 @@ if (!isset($_POST["Invio"])) {
     </body>
     <?php
 } else {
-    if (!isset($_POST["utente"]) || trim($_POST["utente"]) == "") {
-        echo "<p>Devi inserire un user!</p>";
-    } else if (!isset($_POST["password"]) || trim($_POST["password"]) == "") {
-        echo "<p>Devi inserire una password!</p>";
-    } else if (!isset($_POST["nome"]) || trim($_POST["nome"]) == "") {
-        echo "<p>Devi inserire un nome!</p>";
-    } else if (!isset($_POST["cognome"]) || trim($_POST["cognome"]) == "") {
-        echo "<p>Devi inserire un cognome!</p>";
+    if ((!isset($_POST["utente"]) || trim($_POST["utente"]) == "") || (!isset($_POST["password"]) || trim($_POST["password"]) == "") || (!isset($_POST["nome"]) || trim($_POST["nome"]) == "") || (!isset($_POST["cognome"]) || trim($_POST["cognome"]) == "")) {
+        $_SESSION["vuoto"] = "si";
+        header("Location: SignUp.php");
     } else {
         $inputUser = $_POST["utente"];
         $inputPass = $_POST["password"];
@@ -52,13 +71,17 @@ if (!isset($_POST["Invio"])) {
         $result = mysqli_query($conn, $sql) or die("ERROR: " . mysqli_error($conn) . " (query was $sql)");
 
         if (mysqli_num_rows($result) > 0) {
-            echo "<h2>L'utente associato a queste credenziali esiste già</h2>";
+            $_SESSION["errore"] = "si";
+            header("Location: SignUp.php");
         } else {
             $sql = "INSERT INTO `utente` (`Nome`, `Cognome`, `Username`, `Password`) VALUES ('$inputNome', '$inputCognome', '$inputUser', '$pwd')";
             $result = mysqli_query($conn, $sql) or die("ERROR: " . mysqli_error($conn) . " (query was $sql)");
-            echo "<h2>Ti sei registrato come: " . $inputUser . "</h2>";
+            $_SESSION["corretto"] = "si";
+            header("Location: SignUp.php");
         }
         mysqli_close($conn);
+        session_start();
+        session_destroy();
     }
 }
 ?>

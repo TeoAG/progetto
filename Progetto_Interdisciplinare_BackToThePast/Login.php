@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php
+session_start();
 require('config.php');
 if (!isset($_POST["Invio"])) {
     ?>
@@ -22,6 +23,21 @@ if (!isset($_POST["Invio"])) {
                         <img src="images/freccia.png">
                     </button>
                 </form>
+                <?php
+                if (isset($_SESSION["vuoto"])) {
+                    ?>
+                    <h3 style="color: red;">Riprova, Non lasciare nessun campo vuoto.</h3>
+                    <?php
+                    session_destroy();
+                } else {
+                    if (isset($_SESSION["errore"])) {
+                        ?>
+                        <h3 style="color: red;">Riprova Utente inesistente, Registrati.</h3>
+                        <?php
+                        session_destroy();
+                    }
+                }
+                ?>
                 <p>Vuoi creare un account? <a href="SignUp.php">Registrati</a></p>
                 <div class="casa">
                     <a href="HomePage.php"><img src="images/casa.gif"></a>
@@ -31,10 +47,9 @@ if (!isset($_POST["Invio"])) {
     </body>
     <?php
 } else {
-    if (!isset($_POST["utente"]) || trim($_POST["utente"]) == "") {
-        echo "<p>Devi inserire un user!</p>";
-    } else if (!isset($_POST["password"]) || trim($_POST["password"]) == "") {
-        echo "<p>Devi inserire una password!</p>";
+    if ((!isset($_POST["utente"]) || trim($_POST["utente"]) == "") || (!isset($_POST["password"]) || trim($_POST["password"]) == "")) {
+        $_SESSION["vuoto"] = "si";
+        header("Location: Login.php");
     } else {
         $inputUser = $_POST["utente"];
         $inputPass = $_POST["password"];
@@ -45,11 +60,11 @@ if (!isset($_POST["Invio"])) {
         $result = mysqli_query($conn, $sql) or die("ERROR: " . mysqli_error($conn) . " (query was $sql)");
 
         if (mysqli_num_rows($result) > 0) {
-            session_start();
             $_SESSION["username"] = $inputUser;
             header("Location: HomePage.php");
         } else {
-            echo "<h2>User non esistente o Credenziali errate</h2>";
+            $_SESSION["errore"] = "si";
+            header("Location: Login.php");
         }
         mysqli_close($conn);
     }
