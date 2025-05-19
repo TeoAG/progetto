@@ -5,7 +5,7 @@
 
 body {
     font-family: 'circular';
-    background-color: orange;
+    background: linear-gradient(90deg, purple, orange);
 }
 
 .pannelloAccount {
@@ -20,6 +20,7 @@ body {
     width: 500px;
     height: auto;
     background-color: white;
+    border: 5px solid black;
     border-radius: 15px;
     align-items: center;
     padding: 20px 20px 20px 20px;
@@ -30,7 +31,11 @@ body {
     color: orange;
 }
 
-.account input {
+.account h3 {
+    text-align: center;
+}
+
+.account input, .account select {
     width: 250px;
     padding: 10px 10px;
     margin-top: 5px;
@@ -47,17 +52,19 @@ body {
 
 .account a {
     color: purple;
+    text-decoration: none;
 }
 
 .account form {
     display: grid;
     justify-content: center;
+    
 }
 
 .account button {
     background-color: purple;
     color: white;
-    border: none;
+    border: 5px solid black;
     cursor: pointer;
     font-size: 16px;
     margin-top: 20px;
@@ -72,4 +79,9 @@ body {
 .casa {
     display: flex;
     justify-content: center;
+    margin-top: 20px;
+}
+
+form select {
+    margin-bottom: 25px;
 }

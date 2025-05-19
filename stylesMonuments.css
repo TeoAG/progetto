@@ -1,0 +1,105 @@
+@font-face {
+    font-family: circular;
+    src: url(Fonts/AvenirLTStd-Black.otf);
+}
+
+body {
+    font-family: 'circular';
+    background: linear-gradient(90deg, purple, orange);
+}
+
+.struttura {
+    display: grid;
+    grid-template-rows: auto auto;
+}
+
+.descrizione {
+    text-align: center;
+    margin: 50px 20% 0px 20%;
+    color: white;
+}
+
+.monumento {
+    background-color: orange;
+    border-radius: 10px;
+    margin: 10px 20%;
+    cursor: pointer;
+    position: relative;
+    border: 5px solid black;
+}
+
+.description {
+    display: none;
+    background-image: url(mattoni.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 5px;
+    margin-top: 5px;
+    border-radius: 0px 0px 10px 10px;
+    height: auto;
+}
+
+.description .testo {
+    padding: 10px;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"]:checked~.description {
+    display: block;
+}
+
+label {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+}
+
+label h3 {
+    text-align: center;
+    color: white;
+}
+
+.dati {
+    margin-top: 50px;
+}
+
+.navbar {
+    background-color: orange;
+    padding: 10px 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    border-top: 5px solid black;
+    border-bottom: 5px solid black;
+}
+
+.navbar-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.navbar-list li {
+    display: inline;
+}
+
+.navbar-list a {
+    text-decoration: none;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.navbar-list a:hover {
+    background-color: purple;
+    color: white;
+}

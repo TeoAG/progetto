@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="stylesAccess.css">
+    <title>Prenotazioni</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+</head>
+
+<body>
+    <div class="pannelloAccount">
+        <div class="account">
+            <h2>Prenotazione visita</h2>
+            <form action="POST" onchange="document.getElementById('selected_text').value = this.options[this.selectedIndex].text">
+                Scegli Tour:
+                <select id="scelta">
+                    
+                </select>
+                Scegli Tariffa:
+                <select id="scelta">
+                    
+                </select>
+                Data: <input type="date">
+                <button type="submit" name="InvioCredenziali" accesskey="enter">
+                    <img src="freccia.png">
+                </button>
+            </form>
+            <div class="casa">
+                <a href="HomePage.html"><img src="casa.gif"></a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
